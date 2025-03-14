@@ -2,7 +2,7 @@ import * as React from 'react';
 
 type IButtonProperties = {
     onClick: () => void;
-    children: string;
+    children: any;
     type? : 'primary';
     variant?: 'small';
 }

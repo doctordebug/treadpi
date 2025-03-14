@@ -1,9 +1,5 @@
 import * as React from 'react';
 import { Status } from '../helper/interfaces';
-import { pretifyMeters, pretifySeconds } from '../helper/utils';
-import CurrentSpeedComponent from './CurrentSpeedComponent';
-import CurrentTimeComponent from './CurrentTimeComponent';
-import CurrentDistanceComponent from './CurrentDistanceComponent';
 import Row from './UIElements.tsx/Row';
 import SetSpeedComponent from './SetSpeedComponent';
 
@@ -14,15 +10,16 @@ interface ITreadmillStatus {
 const ControllComponent = (props:ITreadmillStatus) => {
 
     return (
-      <Row justifyContent='center'>
-        <SetSpeedComponent speed={6}/>
-        <SetSpeedComponent speed={8}/>
+      <Row justifyContent='center' id="controll">
         <SetSpeedComponent speed={10}/>
+        <SetSpeedComponent speed={11}/>
         <SetSpeedComponent speed={12}/>
+        <SetSpeedComponent speed={13}/>
         <SetSpeedComponent speed={14}/>
+        <SetSpeedComponent speed={15}/>
         <SetSpeedComponent speed={16}/>
+        <SetSpeedComponent speed={17}/>
         <SetSpeedComponent speed={18}/>
-        <SetSpeedComponent speed={20}/>
       </Row>
     )
 }

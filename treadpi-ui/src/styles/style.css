@@ -1,70 +1,99 @@
 :root {
---background-color-main: rgb(50,50,50);
---background-color-priamry-components: rgb(255,75,0);
---font-color-main:rgb(240,240,240);
---font-color-primary-components:rgb(240,240,240);
+    --background-color-main: rgb(50, 50, 50);
+    --background-color-priamry-components: rgb(255, 75, 0);
+    --font-color-main: rgb(240, 240, 240);
+    --font-color-primary-components: rgb(240, 240, 240);
 }
+
 @font-face {
     font-family: 'OpenSans';
     src: local('OpenSans'), url(OpenSans-VariableFont_wdth,wght.ttf) format('truetype');
-  }
+}
 
 #app,
 html,
-body{
+body {
     font-family: 'OpenSans';
     margin: 0px;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
 }
-.appLayout{
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.appLayout {
+    height: 100%;
     background-color: var(--background-color-main);
+    color: var(--font-color-main);
+    padding: 1em;
     display: flex;
     flex-direction: column;
-    color: var(--font-color-main);
-    height: 100%;
+    gap: 1em;
+    font-size: 2em;
 }
 
-.row{
+.row {
     display: flex;
-    flex-direction: row;
-}
-
-.center{
     justify-content: center;
+    gap: 0.5em;
 }
 
-.btn{
-    font-size: 75px;
-    padding: 30px 70px;
-}
-.btn-primary{
+.btn-primary {
     background-color: var(--background-color-priamry-components);
     color: var(--font-color-primary-components);
 }
 
-.btn-small{
-    padding: 20px 20px;
+#controll .btn {
+    width: 8vw;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+}
+.speed{
+    font-size: 2vw;
+}
+.pace{
+    font-size: 1.5vw;
+}
+#controll .btn .unit{
+    font-size: 1vw;
+}
+
+#start-stop {
+    height: 16vh;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
     text-align: center;
-    font-size: 80px;
-    margin: 10px;
-    min-width: 100px;
-    min-height: 100px;
+    width: 100%;
+    justify-content: center;
 }
 
-.statusComponent{
-    padding: 30px 70px
+#start-stop .btn{
+    font-size: 10vh;
 }
 
-.statusComponent .description{
-    font-size: 75px;
+#controll, #start-stop{
+    height: 30vh;
 }
-
-
-.statusComponent .unit{
-    font-size: 50px;
+#status{
+    height: 40vh;
+    justify-content: space-around;
+    font-size: 10vh;
 }
-
-
-.statusComponent .value{
-    font-size: 75px;
+.description{
+    font-size: 7vh;
+}
+.btn-default{
+    border: 2px solid #ccc;
 }
