@@ -4,7 +4,7 @@ type IButtonProperties = {
     onClick: () => void;
     children: any;
     type? : 'primary';
-    variant?: 'small';
+    variant?: 'small' | "speedControll";
 }
 
 const Button = (prop: IButtonProperties) => {

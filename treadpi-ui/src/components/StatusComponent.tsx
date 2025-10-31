@@ -13,11 +13,15 @@ interface ITreadmillStatus {
 const StatusComponent = (props:ITreadmillStatus) => {
 
     return (
-      <Row justifyContent='center' id='status'>
-        <CurrentSpeedComponent speed={props.treadmillStatus?.speed}/>
-        <CurrentDistanceComponent distance={props.treadmillStatus?.meters}/>
+      <div className='status-component'>
+      <Row justifyContent='space-between' >
         <CurrentTimeComponent time={props.treadmillStatus?.time_in_millis}/>
+        <CurrentDistanceComponent distance={props.treadmillStatus?.meters}/>
+        </Row>
+      <Row justifyContent='center'>
+        <CurrentSpeedComponent speed={props.treadmillStatus?.speed}/>
       </Row>
+      </div>
     )
 }
 

@@ -46,9 +46,18 @@ body {
     gap: 0.5em;
 }
 
+.space-between{
+    justify-content: space-between;
+}
+
 .btn-primary {
     background-color: var(--background-color-priamry-components);
     color: var(--font-color-primary-components);
+}
+
+.btn-speedControll {
+    font-size: 8vh;
+    max-width: 5em;
 }
 
 #controll .btn {
@@ -80,11 +89,11 @@ body {
 }
 
 #start-stop .btn{
-    font-size: 10vh;
+    font-size: 8vh;
 }
 
 #controll, #start-stop{
-    height: 30vh;
+    height: 25vh;
 }
 #status{
     height: 40vh;
@@ -96,4 +105,11 @@ body {
 }
 .btn-default{
     border: 2px solid #ccc;
+}
+.status-component{
+    width: 800px;
+    align-self: center;
+}
+.xxl{
+    font-size: 3em !important;
 }

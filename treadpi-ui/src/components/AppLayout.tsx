@@ -15,8 +15,8 @@ const AppLayout = () => {
 
   return(      
   <div className="appLayout">
-    <ControllComponent treadmillStatus={data}/>
     <StatusComponent treadmillStatus={data}/>
+    <ControllComponent treadmillStatus={data}/>
     <StartStopComponent/>
   </div>
 )

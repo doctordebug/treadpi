@@ -5,12 +5,13 @@ interface IValueWithLabelProps {
   value: string,
   unit:string,
   description: string
+  style?:string
 }
 
 const ValueWithLabel = (props:IValueWithLabelProps) => {
 
     return (
-      <div className='valueWithLabel statusComponent'>
+      <div className={`valueWithLabel statusComponent ${props.style ?? ""}`}>
         <div className='description'>{props.description}</div>
         <Row>
         <div className='unit'>{props.unit}</div>

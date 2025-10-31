@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface RequireType {
     children: React.ReactNode | React.ReactNode[] | string;
-    justifyContent?: "center" | "left" | "right"
+    justifyContent?: "center" | "left" | "right" | "space-between"
     id?: string
 }
 

@@ -13,7 +13,7 @@ const CurrentDistanceComponent = (props:ITreadmillStatus) => {
         <ValueWithLabel 
         unit="KM"
         value={pretifyMeters(props.distance)}
-        description="Distance"
+        description=""
         />
     )
 }

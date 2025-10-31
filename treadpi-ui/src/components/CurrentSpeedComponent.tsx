@@ -13,7 +13,8 @@ const CurrentSpeedComponent = (props:ITreadmillStatus) => {
         <ValueWithLabel 
         unit="KMH"
         value={Math.round(props.speed) +".0"}
-        description="Speed"
+        description=""
+        style='xxl'
         />
     )
 }
