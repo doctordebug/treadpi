@@ -12,10 +12,9 @@ const ValueWithLabel = (props:IValueWithLabelProps) => {
 
     return (
       <div className={`valueWithLabel statusComponent ${props.style ?? ""}`}>
-        <div className='description'>{props.description}</div>
-        <Row>
-        <div className='unit'>{props.unit}</div>
-        <div className='value'>{props.value}</div>
+        <Row direction='vertical'>
+          <div className='unit'>{props.unit}</div>
+          <div className='value'>{props.value}</div>
         </Row>
       </div>
     )

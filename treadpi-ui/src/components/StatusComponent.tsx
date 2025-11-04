@@ -15,11 +15,9 @@ const StatusComponent = (props:ITreadmillStatus) => {
     return (
       <div className='status-component'>
       <Row justifyContent='center'>
+        <CurrentSpeedComponent speed={props.treadmillStatus?.speed}/>
         <CurrentTimeComponent time={props.treadmillStatus?.time_in_millis}/>
         <CurrentDistanceComponent distance={props.treadmillStatus?.meters}/>
-        </Row>
-      <Row justifyContent='center'>
-        <CurrentSpeedComponent speed={props.treadmillStatus?.speed}/>
       </Row>
       </div>
     )

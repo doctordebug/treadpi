@@ -11,7 +11,7 @@ const CurrentTimeComponent = (props:ITreadmillStatus) => {
 
     return (
       <ValueWithLabel
-      unit="H"
+      unit="Time (Hours)"
       value={pretifySeconds(props.time)}
       description=""
       style='xxl'
