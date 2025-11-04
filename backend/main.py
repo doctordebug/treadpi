@@ -52,38 +52,34 @@ def set_voltage(voltage):
     
 
 def set_speed(kmh_dest):
-    #changing speed step-by-step (negative value = slow down)
-    global current_kmh
-    global seconds_per_kmh_change
-    global volts_per_kmh
-    global current_volts
-    global current_state
-    start_volts = current_volts
+    global current_kmh, seconds_per_kmh_change, volts_per_kmh, current_volts, current_state
+
     kmh_difference = kmh_dest - current_kmh
     if kmh_difference == 0:
         return
-    
-    volts_difference = (kmh_difference) * volts_per_kmh
 
-    steps = int (kmh_difference / seconds_per_kmh_change)
-    steps = max(steps, -steps)
-    
+    volts_difference = kmh_difference * volts_per_kmh
+
+    # Anzahl Schritte berechnen
+    steps = int(abs(kmh_difference) / seconds_per_kmh_change)
+    if steps == 0:
+        steps = 1  # Verhindert Division durch 0
+
     increaseByStep = volts_difference / steps
 
     print(f"increaseByStep: {increaseByStep}")
-    for s in range (0,steps):
-        start_volts += increaseByStep
-        new_voltage = max(0,start_volts)
 
-        set_voltage(new_voltage)
-        print(f"set voltage to {new_voltage}V - step: {s} of {steps}")
+    for s in range(steps):
+        current_volts += increaseByStep
+        current_volts = max(0, min(5, current_volts))  # Clamp to 0..5V
+
+        set_voltage(current_volts)
+        print(f"set voltage to {current_volts}V - step {s+1}/{steps}")
+
+        current_kmh = current_volts / volts_per_kmh
         time.sleep(seconds_per_kmh_change)
-        current_kmh = max(0, start_volts / volts_per_kmh)
-        current_volts = start_volts
-        if(current_kmh <= 0):
-            current_state = paused
-        else: 
-            current_state = running
+
+        current_state = running if current_kmh > 0 else paused
 
 def run():
     global current_millis
