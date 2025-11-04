@@ -10,7 +10,7 @@ interface ITreadmillStatus {
 
 const CurrentSpeedComponent = (props: ITreadmillStatus) => {
   return (
-    <Row direction="vertical">
+    <Row direction="horizontal">
     <ValueWithLabel
       unit="KMH"
       value={<Row>{(props.speed ?? 0).toFixed(2)}</Row>}
@@ -21,7 +21,7 @@ const CurrentSpeedComponent = (props: ITreadmillStatus) => {
       unit="min/km"
       value={<Row>{convertKmHToPace(props.speed)}</Row>}
       description=""
-      style="m"
+      style="xxl"
     />
     </Row>
   );

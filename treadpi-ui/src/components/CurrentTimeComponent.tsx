@@ -14,6 +14,7 @@ const CurrentTimeComponent = (props:ITreadmillStatus) => {
       unit="H"
       value={pretifySeconds(props.time)}
       description=""
+      style='xxl'
       />
     )
 }

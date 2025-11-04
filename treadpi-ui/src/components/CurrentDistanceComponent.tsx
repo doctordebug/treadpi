@@ -14,6 +14,7 @@ const CurrentDistanceComponent = (props:ITreadmillStatus) => {
         unit="KM"
         value={pretifyMeters(props.distance)}
         description=""
+        style='xxl'
         />
     )
 }

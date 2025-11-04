@@ -1,123 +1,154 @@
-:root {
-    --background-color-main: rgb(50, 50, 50);
-    --background-color-priamry-components: rgb(255, 75, 0);
-    --font-color-main: rgb(240, 240, 240);
-    --font-color-primary-components: rgb(240, 240, 240);
-}
-
-@font-face {
-    font-family: 'OpenSans';
-    src: local('OpenSans'), url(OpenSans-VariableFont_wdth,wght.ttf) format('truetype');
-}
-
-#app,
-html,
-body {
-    font-family: 'OpenSans';
-    margin: 0px;
-    height: 100vh;
-    width: 100vw;
-}
-
+/* =========================
+   RESET / BASICS
+========================= */
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "OpenSans", sans-serif;
+}
+
+:root {
+  --bg: #121212;
+  --card-bg: #1e1e1e;
+  --accent: #ff4500;
+  --accent-hover: #ff6a32;
+  --text: #f5f5f5;
+  --text-muted: #bbbbbb;
+  --radius: 14px;
+  --transition: 0.18s ease;
 }
 
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* =========================
+   LAYOUT
+========================= */
 .appLayout {
-    height: 100%;
-    background-color: var(--background-color-main);
-    color: var(--font-color-main);
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    font-size: 2em;
+  width: min(1100px, 100%);
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
 }
 
 .row {
-    display: flex;
-    justify-content: center;
-    gap: 0.5em;
+  display: flex;
+  gap: 1rem;
+  padding: 0.35rem;
 }
 
-.space-between{
-    justify-content: space-between;
+.space-between {
+  justify-content: space-between;
+}
+
+.center {
+  justify-content: center;
+}
+
+.direction-vertical {
+  flex-direction: column;
+}
+
+/* =========================
+   STATUS DISPLAY (Pace / KmH / Time etc.)
+========================= */
+.valueWithLabel {
+  background: #252525;
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius);
+  text-align: center;
+  min-width: 100px;
+}
+
+.valueWithLabel .unit {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.valueWithLabel .value {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.valueWithLabel.xxl .value {
+  font-size: 4rem;
+}
+
+.valueWithLabel.m .value {
+  font-size: 1.4rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius);
+  padding: 1rem 1.6rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.btn-default {
+  background: #363636;
+  color: var(--text);
+}
+
+.btn-default:hover {
+  background: #454545;
 }
 
 .btn-primary {
-    background-color: var(--background-color-priamry-components);
-    color: var(--font-color-primary-components);
+  background: var(--accent);
+  color: var(--text);
 }
 
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-small {
+  flex-direction: column;
+  width: 95px;
+  padding: 1.2rem;
+  font-size: 1rem;
+}
+
+.btn-small .speed {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* +/- Speed Controls */
 .btn-speedControll {
-    font-size: 8vh;
-    max-width: 5em;
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+  border-radius: 50%;
 }
 
-#controll .btn {
-    width: 8vw;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-}
-.speed{
-    font-size: 2vw;
-}
-.pace{
-    font-size: 1.5vw;
-}
-#controll .btn .unit{
-    font-size: 1vw;
-}
-
-#start-stop {
-    height: 16vh;
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    justify-content: center;
-}
-
-#start-stop .btn{
-    font-size: 8vh;
-}
-
-#controll, #start-stop{
-    height: 25vh;
-}
-#status{
-    height: 40vh;
-    justify-content: space-around;
-    font-size: 10vh;
-}
-.description{
-    font-size: 7vh;
-}
-.btn-default{
-    border: 2px solid #ccc;
-}
-.status-component{
-    width: 800px;
-    align-self: center;
-}
-.xxl{
-    font-size: 3em !important;
-}
-
-.direction-vertical{
-    flex-direction: column;
-}
-
-.direction-horizontal{
-    flex-direction: row;
+/* Start/Stop Buttons */
+#start-stop .btn {
+  flex: 1;
+  height: 60px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }

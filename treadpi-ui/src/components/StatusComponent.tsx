@@ -14,7 +14,7 @@ const StatusComponent = (props:ITreadmillStatus) => {
 
     return (
       <div className='status-component'>
-      <Row justifyContent='space-between' >
+      <Row justifyContent='center'>
         <CurrentTimeComponent time={props.treadmillStatus?.time_in_millis}/>
         <CurrentDistanceComponent distance={props.treadmillStatus?.meters}/>
         </Row>
