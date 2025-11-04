@@ -113,3 +113,11 @@ body {
 .xxl{
     font-size: 3em !important;
 }
+
+.direction-vertical{
+    flex-direction: column;
+}
+
+.direction-horizontal{
+    flex-direction: row;
+}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Row from './Row';
 
 interface IValueWithLabelProps {
-  value: string,
+  value: string | React.ReactNode,
   unit:string,
   description: string
   style?:string
