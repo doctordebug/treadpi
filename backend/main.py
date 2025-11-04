@@ -118,6 +118,10 @@ def stop():
     print("Stopping")
     set_speed(0)
     global current_state
+    global current_millis
+    global current_distance
+    current_millis = 0
+    current_distance = 0
     current_state = stopped
     return jsonify(speed=current_kmh, volts = current_volts)
 
@@ -137,10 +141,12 @@ def updateSpeed():
 
 if __name__ == '__main__':
     try:
+        set_voltage(0)
         p = Thread(target=run)
         p.start()
         app.run(host='0.0.0.0', port=5000)
         p.join()
     except KeyboardInterrupt:
+          set_voltage(0)
           print('Server Stopped')
           GPIO.cleanup()
