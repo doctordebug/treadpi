@@ -32,9 +32,14 @@ body {
 /* =========================
    LAYOUT
 ========================= */
+#app{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
 
 .appLayout {
-  width: min(1100px, 100%);
+  /*width: min(1100px, 100%);*/
   background: var(--card-bg);
   padding: 2rem;
   border-radius: var(--radius);
