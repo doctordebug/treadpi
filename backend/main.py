@@ -81,6 +81,11 @@ def set_speed(kmh_dest):
 
         current_state = running if current_kmh > 0 else paused
 
+    if kmh_dest == 0:
+        # full stop
+        set_voltage(0)
+        current_state = stopped
+
 def run():
     global current_millis
     global current_state
