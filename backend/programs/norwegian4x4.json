@@ -1,0 +1,36 @@
+{
+  "id": "norwegian4x4",
+  "name": "Norwegian 4x4",
+  "description": "Aerobes Intervalltraining nach Norwegischem Protokoll (4 min high / 3 min low × 4).",
+  "parameters": {
+    "allowUserParams": true,
+    "fields": [
+      {
+        "name": "minSpeed",
+        "label": "Minimale Geschwindigkeit (km/h)",
+        "type": "number",
+        "default": 8
+      },
+      {
+        "name": "maxSpeed",
+        "label": "Maximale Geschwindigkeit (km/h)",
+        "type": "number",
+        "default": 14
+      }
+    ]
+  },
+  "steps": [
+    { "type": "speed", "durationSec": 600, "speed": "param.minSpeed" },
+
+    {
+      "type": "repeat",
+      "repeat": 4,
+      "steps": [
+        { "type": "speed", "durationSec": 240, "speed": "param.maxSpeed" },
+        { "type": "speed", "durationSec": 180, "speed": "param.minSpeed" }
+      ]
+    },
+
+    { "type": "speed", "durationSec": 300, "speed": "param.minSpeed" }
+  ]
+}

@@ -1,9 +1,22 @@
-import RPi.GPIO as GPIO
-import smbus
+try:
+    import RPi.GPIO as GPIO
+except ModuleNotFoundError:
+    print("⚠️ Running in MOCK mode, GPIO not available")
+    from hardware.gpio_mock import GPIO
+try:
+    import smbus
+except ModuleNotFoundError:
+    print("⚠️ Running in MOCK mode, SMBus not available")
+    from hardware.i2c_mock import I2C
+    smbus = I2C  # <-- FIXED
+
 import time
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from threading import Thread
+import os
+import json
+
 
 # I2C-Adresse des MCP4725 DAC
 DEVICE_ADDRESS = 0x60
@@ -35,6 +48,9 @@ current_state = stopped
 current_distance = 0
 # time in millis
 current_millis = 0
+
+#path to JSON programs
+PROGRAM_DIR = "./programs"
 
 #set speed (well... actually voltage, nvm)
 def set_voltage(voltage):
@@ -86,6 +102,40 @@ def set_speed(kmh_dest):
         set_voltage(0)
         current_state = stopped
 
+def list_programs():
+    """Nur Metadaten: id, name, description"""
+    programs = []
+    print("LIST PROGRAMS")
+    if not os.path.exists(PROGRAM_DIR):
+        return jsonify([])
+
+    for file in os.listdir(PROGRAM_DIR):
+        if not file.endswith(".json"):
+            continue
+
+        with open(os.path.join(PROGRAM_DIR, file), "r") as f:
+            data = json.load(f)
+            programs.append({
+                "id": data["id"],
+                "name": data["name"],
+                "description": data["description"],
+                "allowUserParams": data.get("parameters", {}).get("allowUserParams", False)
+            })
+
+    return jsonify(programs)
+
+def get_program(program_id):
+    """Lädt ein Programm inkl. Steps"""
+    file_path = os.path.join(PROGRAM_DIR, f"{program_id}.json")
+    print(file_path)
+    if not os.path.exists(file_path):
+        return jsonify({"error": "Program not found"}), 404
+
+    with open(file_path, "r") as f:
+        data = json.load(f)
+
+    return jsonify(data)
+
 def run():
     global current_millis
     global current_state
@@ -136,8 +186,13 @@ def updateSpeed():
     set_speed(data['speed'])
     return jsonify(speed=current_kmh, volts = current_volts)
 
+@app.route('/api/programs', methods=['GET'])
+def get_programs():
+    return list_programs()
 
-
+@app.route('/api/program/<program_id>', methods=['GET'])
+def get_program_by_id(program_id):
+    return get_program(program_id)
 
 
 if __name__ == '__main__':

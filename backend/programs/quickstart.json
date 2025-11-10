@@ -1,0 +1,16 @@
+{
+  "id": "quickstart",
+  "name": "QuickStart",
+  "description": "Direkt starten ohne Programm. Startgeschwindigkeit: 12 km/h",
+  "parameters": {
+    "allowUserParams": false,
+    "fields": []
+  },
+  "steps": [
+    {
+      "type": "speed",
+      "durationSec": 86400,
+      "speed": 12
+    }
+  ]
+}
