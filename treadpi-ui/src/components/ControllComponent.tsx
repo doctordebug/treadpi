@@ -15,6 +15,13 @@ const ControllComponent = (props: ITreadmillStatus) => {
       <Row justifyContent="center">
         <Button variant="speedControll"
           onClick={() => {
+            setSpeed(Math.max(0, props.treadmillStatus.speed - 1));
+          }}
+        >
+          -1
+        </Button>
+        <Button variant="speedControll"
+          onClick={() => {
             setSpeed(Math.max(0, props.treadmillStatus.speed - 0.2));
           }}
         >
@@ -26,6 +33,13 @@ const ControllComponent = (props: ITreadmillStatus) => {
           }}
         >
           +
+        </Button>
+        <Button variant="speedControll"
+          onClick={() => {
+            setSpeed(Math.min(20, props.treadmillStatus.speed + 1));
+          }}
+        >
+          +1
         </Button>
       </Row>
       <Row justifyContent="center" id="controll">

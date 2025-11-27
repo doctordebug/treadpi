@@ -1,4 +1,4 @@
-import { Status } from "./interfaces";
+import { Status, ProgramShortDescription, WorkoutProgram } from "./interfaces";
 
 const domain = `http://${window.location.hostname}`; 
 let port = 5000;
@@ -12,8 +12,6 @@ function api<T>(url: string): Promise<T> {
       return response.json() as Promise<T>
     })
 }
-
-
 
 export const updateStatus  = () => {
     const res = api<Status>(`${domain}:${port}/api/status`)
@@ -56,4 +54,14 @@ export const setSpeed = (speed:number)=> {
 };
 fetch(`${domain}:${port}/api/speed`, requestOptions)
 
+}
+
+export function loadPrograms() {
+  const res = api<ProgramShortDescription[]>(`${domain}:${port}/api/programs`)
+  return res;
+}
+
+export function loadProgramById(id:string) : Promise<WorkoutProgram>  {
+  const res = api<WorkoutProgram>(`${domain}:${port}/api/program/${id}`)
+  return res;
 }

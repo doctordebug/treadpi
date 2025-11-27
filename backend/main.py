@@ -119,7 +119,8 @@ def list_programs():
                 "id": data["id"],
                 "name": data["name"],
                 "description": data["description"],
-                "allowUserParams": data.get("parameters", {}).get("allowUserParams", False)
+                "allowUserParams": data.get("parameters", {}).get("allowUserParams", False),
+                "userParams": data.get("parameters", {}).get("fields", [])
             })
 
     return jsonify(programs)
