@@ -14,6 +14,16 @@ export const pretifyMeters = (meter: number)=>{
     return `${('0' + hours).slice(-2)}:${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
 };
 
+export const pretifySecondsShort = (millis: number) => {
+    if(!millis || millis == 0) return '00:00'
+    const totalSeconds = Math.round(millis / 1000); // Round once
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${('0' + minutes).slice(-2)}:${('0' + seconds).slice(-2)}`;
+};
+
 export const convertKmHToPace = (speedKmH: number) => {
   if(!speedKmH || speedKmH == 0) return "0:00"
   if (speedKmH <= 0) return "∞"; // 
